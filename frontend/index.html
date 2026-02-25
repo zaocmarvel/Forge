@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge | AI Storyteller</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">⚒️</div>
+                <h1>Forge</h1>
+            </div>
+            
+            <div class="create-panel">
+                <h2>New Story</h2>
+                <form id="storyForm">
+                    <div class="input-group">
+                        <label>Title</label>
+                        <input type="text" id="title" placeholder="The Void Walker" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Genre</label>
+                        <div class="select-wrapper">
+                            <select id="genre">
+                                <option value="Sci-Fi">Sci-Fi</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Cyberpunk">Cyberpunk</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Eldritch Horror">Eldritch Horror</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Premise</label>
+                        <textarea id="prompt" rows="4" placeholder="An astronaut finds a door on Mars..." required></textarea>
+                    </div>
+
+                    <button type="submit" id="createBtn" class="btn-primary">
+                        <span class="btn-text">Forge Story</span>
+                        <span class="loader"></span>
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <h2>Library</h2>
+                <span class="badge" id="storyCount">0 Stories</span>
+            </header>
+            
+            <div id="storiesList" class="stories-grid">
+                </div>
+            
+            <div id="emptyState" class="empty-state hidden">
+                <p>No stories forged yet. Start your journey on the left.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="storyModal" class="modal-backdrop">
+        <div class="modal-container">
+            <header class="modal-header">
+                <div class="header-left">
+                    <h2 id="modalTitle">Story Title</h2>
+                    <span id="modalGenre" class="tag">Genre</span>
+                </div>
+                <div class="header-actions">
+                    <button id="downloadBtn" class="btn-icon" title="Download .txt">
+                        ⬇ <span class="loader-sm"></span>
+                    </button>
+                    <button id="closeModal" class="btn-icon">×</button>
+                </div>
+            </header>
+
+            <div id="storyViewer" class="story-viewer">
+                </div>
+
+            <footer class="modal-footer">
+                <div class="generator-box">
+                    <input type="text" id="continuePrompt" placeholder="What happens next? (Optional instructions)">
+                    <button id="continueBtn" class="btn-secondary">
+                        <span class="btn-text">Generate Chapter</span>
+                        <span class="loader"></span>
+                    </button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
